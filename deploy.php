@@ -3,6 +3,7 @@
 require_once 'recipe/common.php';
 require_once __DIR__ . '/deploy/laravel.php';
 require_once __DIR__ . '/deploy/assets.php';
+require_once __DIR__ . '/deploy/supervisor.php';
 
 // Specify the repository from which to download your project's code.
 // The server needs to have git installed for this to work.
@@ -44,6 +45,7 @@ task('deploy', [
     'npm:install',
     'assets:generate',
     'log:set-permissions',
+    'supervisor:restart',
     'cleanup',
 ])->desc('Deploy your project');
 
